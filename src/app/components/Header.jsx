@@ -36,7 +36,7 @@ const Header = ({ activeTab, setActiveTab }) => {
     const defaultUser = {
       username: "ankit",
       email: "ankit@strivebiocorp.com",
-      hospital_name: "SOI",
+      hospital_name: "Strive Biocorp",
       hospital_id: "101",
       role: "AdminUser",
       user_login: 57,
