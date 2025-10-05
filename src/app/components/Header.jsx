@@ -69,7 +69,7 @@ const Header = ({ activeTab, setActiveTab }) => {
               try {
                 const res = await axios.put('/api/request-insert', { username: parsedUser.username, status: 'disable' });
                 if (res.data[0].status === 200) {
-                  router.push('/login');
+                  //router.push('/login');
                 }
               } catch (error) {
                 console.error('Error updating user status:', error);
@@ -79,11 +79,11 @@ const Header = ({ activeTab, setActiveTab }) => {
         }
         checkUserValidity();
       } else {
-        router.push('/login');
+        //router.push('/login');
       }
     }
     else {
-      router.push('/login'); // Redirect to login if no user cookie found
+      //router.push('/login'); // Redirect to login if no user cookie found
     }
   }, []);
 
@@ -353,7 +353,7 @@ const Header = ({ activeTab, setActiveTab }) => {
               localStorage.removeItem('reportsFilters');
               localStorage.removeItem('reportsData')
               localStorage.removeItem('processingFilters');
-              router.push('/login');
+              //router.push('/login');
             }}
             className="p-2 bg-red-500 text-white font-bold rounded-lg cursor-pointer transition-colors duration-300"
           >
