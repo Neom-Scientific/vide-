@@ -353,6 +353,7 @@ const Header = ({ activeTab, setActiveTab }) => {
               localStorage.removeItem('reportsFilters');
               localStorage.removeItem('reportsData')
               localStorage.removeItem('processingFilters');
+              window.location.reload();
               //router.push('/login');
             }}
             className="p-2 bg-red-500 text-white font-bold rounded-lg cursor-pointer transition-colors duration-300"
