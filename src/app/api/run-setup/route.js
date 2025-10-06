@@ -24,28 +24,28 @@ export async function POST(request) {
         //     [setup.hospital_name]
         // );
 
-        const idFormatRes = await pool.query(
-            `SELECT run_id_prefix, internal_id_separator, run_id_pad_length, run_id_last_seq FROM id_format WHERE hospital_name = $1`,
-            [setup.hospital_name]
-        );
+        // const idFormatRes = await pool.query(
+        //     `SELECT run_id_prefix, internal_id_separator, run_id_pad_length, run_id_last_seq FROM id_format WHERE hospital_name = $1`,
+        //     [setup.hospital_name]
+        // );
 
-        if (idFormatRes.rows.length === 0) {
-            return NextResponse.json([{ message: "No id_format found for hospital", status: 404 }]);
-        }
+        // if (idFormatRes.rows.length === 0) {
+        //     return NextResponse.json([{ message: "No id_format found for hospital", status: 404 }]);
+        // }
 
-        const { run_id_prefix, internal_id_separator, run_id_pad_length, run_id_last_seq } = idFormatRes.rows[0];
+        // const { run_id_prefix, internal_id_separator, run_id_pad_length, run_id_last_seq } = idFormatRes.rows[0];
 
-        // Increment sequence
-        const nextRunSeq = Number(run_id_last_seq) + 1;
+        // // Increment sequence
+        // const nextRunSeq = Number(run_id_last_seq) + 1;
 
-        // Update run_id_last_seq in id_format table
-        await pool.query(
-            `UPDATE id_format SET run_id_last_seq = $1 WHERE hospital_name = $2`,
-            [nextRunSeq, setup.hospital_name]
-        );
+        // // Update run_id_last_seq in id_format table
+        // await pool.query(
+        //     `UPDATE id_format SET run_id_last_seq = $1 WHERE hospital_name = $2`,
+        //     [nextRunSeq, setup.hospital_name]
+        // );
 
-        // Build padded sequence
-        const paddedSeq = String(nextRunSeq).padStart(Number(run_id_pad_length), "0");
+        // // Build padded sequence
+        // const paddedSeq = String(nextRunSeq).padStart(Number(run_id_pad_length), "0");
 
         // Build run_id using internal_id_separator
         // const run_id = `${run_id_prefix}${internal_id_separator || ""}${paddedSeq}`;
